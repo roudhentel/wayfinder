@@ -1,0 +1,41 @@
+{
+  "contentInfo": {
+    "title": null,
+    "description": "Sample Card",
+    "author": "Roudhentel",
+    "updated": "2017-04-11"
+  },
+  "inputs": [
+    {
+      "name": "welcomemsg",
+      "value": "CAN'T FIND WHAT YOU'RE LOOKING FOR?"
+    },
+    {
+      "name": "clicktostart",
+      "value": "TOUCH SCREEN TO BEGIN"
+    },
+    {
+      "name": "bgImage",
+      "value": {
+        "bgColor": "rgba(255, 255, 255, 1)",
+        "bgImage": null
+      }
+    },
+    {
+      "name": "uuid",
+      "value": "Penrith"
+    },
+    {
+      "name": "deviceid",
+      "value": "SCA10001"
+    },
+    {
+      "name": "portalUrl",
+      "value": "http://scawayfinder-portal.azurewebsites.net"
+    },
+    {
+      "name": "routeplayed",
+      "value": 0
+    }
+  ]
+}

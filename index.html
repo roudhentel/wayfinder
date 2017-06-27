@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="angular-on-screen-keyboard.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body ng-app="mainApp" ng-controller="mainCtrl" ng-cloak ng-mousedown="resetTimer();">
+    <!--start page begin-->
+    <img id="imgBg" style="display: none;">
+    <div class="start-page" ng-show="gblVar.currentPage === 0" ng-click="movePageTo(1)">
+        <div class="default-display" ng-show="!(gblVar.showVideo || gblVar.showImage)">
+            <div class="header">
+                <img src="logo.svg" alt="logo">
+            </div>
+            <div class="message">
+                <span>{{gblVar.welcomeMsg.value}}</span>
+            </div>
+            <div class="line">
+                <svg height="10" width="100%">
+                    <line x1="0" y1="0" x2="500" y2="0" style="stroke:#ffd301;stroke-width:10" />
+                </svg>
+            </div>
+            <div class="touchdscr">
+                <span>{{gblVar.clickToStartMsg.value}}</span>
+            </div>
+        </div>
+
+        <div class="image-video-display" ng-show="gblVar.showVideo || gblVar.showImage">
+            <img id="bgImage" class="background-image" ng-show="gblVar.showImage">
+            <video id="bgVideo" class="background-video" preload="metadata" autoplay loop hwz="off" ng-show="gblVar.showVideo"> </video>
+        </div>
+        <!--{{gblVar.playerProperty}}
+        <label>${property.playerguid}</label>
+        <label>${property.storeuuid}</label>
+        <label>${property.Player.GUID}</label>
+        <label>${property.Store.UUID}</label>
+        <div class="error-log">
+            <ul>
+               <li ng-repeat="item in gblVar.listLogs">{{item}}</li> 
+            </ul>
+        </div>-->
+    </div>
+    <!--start page end-->
+
+    <!--search page begin-->
+    <div class="home-search" ng-if="gblVar.currentPage === 1">
+        <div class="left-pane panel panel-default">
+            <!--Left pane-->
+            <img src="logo.svg" alt="logo">
+        </div>
+
+        <div class="search-body panel panel-default">
+            <!--Search-->
+            <div class="navi">
+                <div>
+                    <h1>
+                        <i class="fa fa-home" ng-click="movePageTo(0);"></i>
+                        <!--<i class="fa fa-arrow-circle-o-left"></i>-->
+                    </h1>
+                </div>
+                <div>
+                    <h1>SEARCH</h1>
+                </div>
+                <div></div>
+            </div>
+            <div class="search-box">
+                <div></div>
+                <div class="input-group add-on">
+                    <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" input-resize ng-model="gblVar.searchText"
+                        ng-change="querySearch(gblVar.searchText);" ng-click="setPointerPos($event);">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="btnSubmit" ng-click="clearSearch();"><i class="fa fa-remove"></i></button>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="result-box">
+                <div class="border"></div>
+                <div class="scroll-up" ng-show="showArrowUp()" ng-click="scroll('up');"><i class="fa fa-arrow-up"></i></div>
+                <div class="result-holder" ng-show="gblVar.searchResult.length > 0" ng-mousedown="resetTimer()">
+                    <div class="data" ng-repeat="item in gblVar.searchResult" ng-click="setSelectedItem(item)">{{item.Name}}</div>
+                </div>
+                <div class="scroll-down" ng-show="showArrowDown()" ng-click="scroll('down');"><i class="fa fa-arrow-down"></i></div>
+                <div class="border"></div>
+            </div>
+            <div class="keyboard-div">
+                <!--<on-screen-keyboard rows="gblVar.keyboardRows"></on-screen-keyboard>-->
+                <div class="keyboard">
+                    <table>
+                        <tbody>
+                            <tr ng-repeat="row in gblVar.keyboardRows">
+                                <td ng-repeat="key in row" ng-class="{'button': key.type !== 'margin', 'letter': key.type !== 'margin'}" ng-bind-html="getText(key)"
+                                    colspan="{{key.colspan}}" ng-click="keyboardClick(key);"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="command-div">
+                <button type="button" ng-click="movePageTo(0)">
+                <i class="fa fa-chevron-circle-left"></i>
+                <span>BACK</span>
+            </button>
+                <button type="button" ng-if="gblVar.searchText" ng-click="select();">
+                <span>SELECT</span>
+                <i class="fa fa-chevron-circle-right"></i>
+            </button>
+            </div>
+        </div>
+
+        <div class="right-pane panel panel-default">
+            <!--Right pane-->
+            <!--<h1>
+                <i class="fa fa-search"></i>
+                <i class="fa fa-list"></i>
+            </h1>-->
+        </div>
+    </div>
+    <!--search page end-->
+
+    <!--result page begin-->
+    <div class="search-result" ng-if="gblVar.currentPage === 2">
+        <header>
+            <img src="logo.svg" alt="logo">
+        </header>
+        <div class="body" ng-style="gblVar.selectedItem.Name ? {'height': '80%'} : {}">
+            <div class="multiple-result" ng-if="!gblVar.selectedItem.Name">
+                <p class="message">Here is/are the result(s) for searching `<span class="keyword">{{gblVar.selectedItem.Name || gblVar.searchText}}</span>`</p>
+                <div class="result-container">
+                    <div class="scrollDiv"><i ng-show="showArrowUp_1()" ng-click="scroll_1('up');" class="fa fa-arrow-up scroll-up"></i></div>
+                    <div class="rows-data" ng-if="gblVar.searchResult.length > 0">
+                        <p ng-repeat="item in gblVar.searchResult" ng-click="setSelectedItemV1(item, true);">{{item.Name}}</p>
+                    </div>
+                    <div class="scroll-down" ng-show="showArrowDown_1()" ng-click="scroll_1('down');"><i class="fa fa-arrow-down"></i></div>
+                </div>
+                <p ng-if="gblVar.searchResult.length === 0">Sorry no match found.</p>
+            </div>
+            <div class="single-result" ng-show="gblVar.selectedItem.Name">
+                <div class="map-container">
+                    <svg id="svg" preserveAspectRatio="xMaxYMax"></svg>
+                </div>
+            </div>
+            <div class="result-details" ng-if="gblVar.selectedItem.Name">
+                <div class="part">
+                    "{{gblVar.selectedItem.Name}}" are in {{getDescription(gblVar.selectedItem.AisleNumber)}}
+                    <br> <br>Located in the {{gblVar.selectedItem.Category}}
+                    <div class="commands">
+                        <!--<div class="other-routes">
+                            <select ng-model="gblVar.selectedRouteId" ng-options="r as (idx) for (idx, r) in gblVar.otherRoutes">
+                            </select>
+                            <button ng-click="viewOnMap(gblVar.selectedRouteId)" ng-disabled="disableButton">View</button>
+                        </div>-->
+                        <button type="button">
+                            <i class="fa fa-print"></i>
+                            <span>PRINT DIRECTIONS</span>
+                        </button>
+                        <button type="button" ng-click="movePageTo(1)">
+                            <i class="fa fa-search"></i>
+                            <span>SEARCH AGAIN</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer ng-if="!gblVar.selectedItem.Name">
+            <button type="button" ng-click="movePageTo(1)">
+            <i class="fa fa-chevron-circle-left"></i>
+            <span>BACK</span>
+        </button>
+        </footer>
+    </div>
+    <!--result page end-->
+
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="angular-sanitize.min.js"></script>
+    <script src="angular-on-screen-keyboard.min.js"></script>
+    <script src="cardapi.js"></script>
+    <script src="snap.svg.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

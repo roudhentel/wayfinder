@@ -1,0 +1,192 @@
+.start-page {
+    width: 100%;
+    height: 100%;
+    
+
+    .default-display {
+        width: 100%;
+        height: 100%;
+        background: $background-default;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        .fa-refresh {
+            font-size: 40px;
+            color: #0F0;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .header {
+            margin-top: 5%;
+
+            @include respond-to(sm) {
+                height: 15%;
+                display: flex;
+                flex-direction: column;
+
+                img {
+                    height: 100%;
+                }
+            }
+
+            @include respond-to(md) {
+                height: 15%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            img {
+                height: 170px;
+
+                @include respond-to(lg) {
+                    height: 120px;
+                }
+
+                @include respond-to(xlg) {
+                    height: 130px;
+                }
+
+                @include respond-to(xxlg) {
+                    height: 140px;
+                }
+            }
+        }
+
+        .message {
+            font-size: 100px;
+            font-weight: bold;
+            font-family: 'HelveticaNeueLT';
+            font-style: italic;
+            -webkit-text-stroke-width: 3px;
+            -webkit-text-stroke-color: black;
+            color: #FFF;
+            line-height: 85px;
+            margin-top: 5%;
+            transform: rotate(-3deg);
+            text-shadow: 0 0 10px black;
+            max-width: 50%;
+
+            @include respond-to(sm) {
+                font-size: 65px;
+                -webkit-text-stroke-width: 2px;
+                line-height: 65px;
+                margin-top: 7%;
+                max-width: 70%;
+            }
+
+            @include respond-to(md) {
+                font-size: 65px;
+                -webkit-text-stroke-width: 2px;
+                line-height: 65px;
+                margin-top: 7%;
+                max-width: 70%;
+            }
+
+            @include respond-to(lg) {
+                max-width: 60%;
+                font-size: 70px;
+                -webkit-text-stroke-width: 2px;
+            }
+
+            @include respond-to(xlg) {
+                max-width: 70%;
+                font-size: 75px;
+                -webkit-text-stroke-width: 2px;
+            }
+
+            @include respond-to(xxlg) {
+                max-width: 65%;
+                font-size: 90px;        
+            }
+        }
+
+        .line {
+            display: block;
+            height: 10px;
+            background: #ffd301;
+            width: 50%;
+            transform: rotate(-3deg);
+
+            @include respond-to(sm) {
+                width: 70%;
+            }
+
+            @include respond-to(md) {
+                width: 70%;
+            }
+
+            @include respond-to(lg) {
+                width: 60%;
+            }
+
+            @include respond-to(xlg) {
+                width: 70%;
+            }
+
+            @include respond-to(xxlg) {
+                width: 65%;        
+            }
+        }
+
+        .touchdscr {
+            font-size: 65px;
+            font-weight: bold;
+            font-family: 'HelveticaNeueLT';
+            font-style: italic;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: #FFF;
+            color: #000;
+            line-height: 80px;
+            margin-top: 5%;
+            transform: rotate(-3deg);
+
+            @include respond-to(sm) {
+                font-size: 55px;
+                -webkit-text-stroke-width: 1px;
+                line-height: 55px;
+                margin-top: 7%;
+            }
+
+            @include respond-to(md) {
+                font-size: 55px;
+                -webkit-text-stroke-width: 1px;
+                line-height: 55px;
+                margin-top: 7%;
+            }
+
+            @include respond-to(lg) {
+                font-size: 60px;
+                -webkit-text-stroke-width: 1px;
+                line-height: 60px;
+                margin-top: 7%;
+            }
+
+            @include respond-to(xlg) {
+                font-size: 65px;
+                -webkit-text-stroke-width: 1px;
+                line-height: 65px;
+                margin-top: 7%;        
+            }
+        }
+
+        .error-log {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            max-height: 200px;
+            overflow: auto;
+        }
+    }
+
+    .image-video-display {
+        img, video {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

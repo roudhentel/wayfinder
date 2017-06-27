@@ -1,0 +1,110 @@
+{
+    "version": "1.0",
+    "settings": {
+        "fontfamily": [
+            "Calibri"
+        ]
+    },
+    "inputs": [
+        {
+            "name": "welcomemsg",
+            "type": "textbox",
+            "label": "Welcome message",
+            "placeholder": "Enter message...",
+            "visible": true,
+            "options": {}
+        },
+        {
+            "name": "clicktostart",
+            "type": "textbox",
+            "label": "Clict to begin message",
+            "placeholder": "Enter message...",
+            "visible": true,
+            "options": {}
+        },
+        {
+            "name": "bgImage",
+            "label": "Customize the background",
+            "type": "background",
+            "options": {
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ],
+                "defaultcolor": "#ffffff",
+                "showcolor": true,
+                "showimage": true,
+                "dropText": "Drop a media file (image, mp4) here or "
+            },
+            "validation": {
+                "fileextensions": [
+                    ".jpg",
+                    ".png",
+                    ".bmp",
+                    ".jpeg",
+                    ".svg",
+                    ".gif",
+                    ".mp4"
+                ]
+            }
+        },
+        {
+            "name": "uuid",
+            "type": "textbox",
+            "label": "Store UUID",
+            "placeholder": "Enter store uuid...",
+            "visible": true,
+            "options": {}
+        },
+        {
+            "name": "routeplayed",
+            "label": "Route to be played",
+            "type": "dropdown",
+            "options": {
+                "defaultitem": 0
+            },
+            "items": [
+                {
+                    "label": "1",
+                    "value": 0
+                },
+                {
+                    "label": "2",
+                    "value": 1
+                },
+                {
+                    "label": "3",
+                    "value": 2
+                },
+                {
+                    "label": "4",
+                    "value": 3
+                },
+                {
+                    "label": "5",
+                    "value": 4
+                },
+                {
+                    "label": "6",
+                    "value": 5
+                },
+                {
+                    "label": "7",
+                    "value": 6
+                },
+                {
+                    "label": "8",
+                    "value": 7
+                },
+                {
+                    "label": "9",
+                    "value": 8
+                },
+                {
+                    "label": "10",
+                    "value": 9
+                }
+            ]
+        }
+    ]
+}

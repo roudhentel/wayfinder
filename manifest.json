@@ -1,0 +1,22 @@
+{
+    "Name": "SCA Wayfinder",
+    "Id": "com.sca.wayfinder",
+    "Description": "SCA Wayfinder prototype",
+    "Thumbnail": "thumbnail.svg",
+    "Startup": "index.html",
+    "Schema": "schema.json",
+    "Model": "model.json",
+    "Developer": "Roudhentel",
+    "Version": "1.0.0",
+    "DisplayFormats": [
+        {
+            "type": "tv"
+        },
+        {
+            "type": "mobile"
+        }
+    ],
+    "Network": {
+        "RequiresConnection": true
+    }
+}

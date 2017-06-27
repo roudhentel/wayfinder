@@ -1,0 +1,363 @@
+.search-result {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    overflow: hidden;
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 25%;
+            min-width: 100px;
+        }
+    }
+
+    .body {
+        font-size: 30px;
+        color: #ffd401;
+        font-family: 'Helvetica Neue LT 57';
+        font-weight: lighter;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        height: 60%;
+        position: relative;
+
+        .multiple-result {
+            text-align: center;
+
+            .message {
+                font-size: 150%;
+                font-family: 'HelveticaNeueLT';
+
+                @include respond-to(sm) {
+                    font-size: 35px;
+                }
+
+                @include respond-to(md) {
+                    font-size: 35px;
+                }
+
+                @include respond-to(lg) {
+                    font-size: 40px;
+                }
+
+                @include respond-to(xlg) {
+                    font-size: 40px;
+                }
+
+                .keyword {
+                    font-weight: bold;
+                    color: $background-default;
+                }
+            }
+
+            .result-container {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .scrollDiv {
+                    height: 45px;
+                }
+                .scroll-down, .scroll-up {
+                    font-size: 30px;
+                    color: #b5b5b5;
+                    background-color: #dadada;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+
+                    &:hover, &:active, &:focus {
+                        color: #8a8a8a;
+                        background-color: #cacaca;
+                    }
+
+                    @include respond-to(sm) {
+                        font-size: 20px;
+                        height: 30px;
+                        width: 30px;
+                    }
+
+                    @include respond-to(md) {
+                        font-size: 20px;
+                        height: 30px;
+                        width: 30px;
+                    }
+
+                    @include respond-to(lg) {
+                        font-size: 20px;
+                        height: 30px;
+                        width: 30px;
+                    }
+                }
+
+                .scroll-down {
+                    margin-top: 10px;
+                }
+
+                .scroll-up {
+                    margin-bottom: 10px;
+                }
+            }
+            .rows-data {
+                height: 500px;
+                overflow: auto;
+                position: relative;
+
+                @include respond-to(sm) {
+                    height: 340px;
+                }
+
+                @include respond-to(md) {
+                    height: 350px;
+                }
+
+                @include respond-to(lg) {
+                    height: 310px;
+                }
+
+                @include respond-to(xlg) {
+                    height: 410px;
+                }
+
+                @include respond-to(xxlg) {
+                    height: 400px;
+                }
+
+                p {
+                    border-bottom: 1px solid rgba(255, 255, 0, 0.16);
+                    cursor: pointer;
+                    @include respond-to(sm) {
+                        font-size: 20px;
+                    }
+
+                    @include respond-to(md) {
+                        font-size: 20px;
+                    }
+
+                    @include respond-to(lg) {
+                        font-size: 23px;
+                    }
+
+                    @include respond-to(xlg) {
+                        font-size: 23px;
+                    }
+                }
+            }
+        }
+
+        .single-result {
+            display: flex;
+            justify-content: center;
+
+            div.map-container {
+                width: 795px;
+                background: #FFF;
+
+                @include respond-to(xlg) {
+                    width: 720px;
+                }
+
+                @include respond-to(xxlg) {
+                    width: 730px;
+                }
+            }
+
+            @include respond-to(sm) {
+                justify-content: flex-start;
+                padding-left: 5px;
+
+                div.map-container {
+                    width: 550px;
+                }
+            }
+
+            @include respond-to(md) {
+                justify-content: flex-start;
+                padding-left: 5px;
+
+                div.map-container {
+                    width: 620px;
+                }
+            }
+
+            @include respond-to(lg) {
+                justify-content: flex-start;
+                padding-left: 5px;
+
+                div.map-container {
+                    width: 620px;
+                }
+            }
+
+            
+        }
+
+        .result-details {
+            display: flex;
+            height: 100%;
+            width: 30%;
+            margin-left: 10px;
+            border: 1px solid #FFF;
+            padding: 5px;
+            font-size: 28px;
+
+            @include respond-to(sm) {
+                width: 35%;
+            }
+
+            @include respond-to(md) {
+                width: 35%;
+            }
+
+            @include respond-to(lg) {
+                width: 40%;
+            }
+
+            @include respond-to(xlg) {
+                width: 40%;
+            }
+
+            .part {
+                position: relative;
+                width: 100%;
+                
+                @include respond-to(sm) {
+                    font-size: 15px;
+                }
+
+                @include respond-to(md) {
+                    font-size: 17px;
+                }
+
+                @include respond-to(lg) {
+                    font-size: 27px;
+                }
+
+                @include respond-to(xlg) {
+                    font-size: 27px;
+                }
+
+                .commands {
+                    position: absolute;
+                    height: 40%;
+                    width: 100%;
+                    bottom: 0;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+
+                    .other-routes {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 5px 5px 20px 5px;
+
+                        select, button {
+                            height: 45px;
+                        }
+
+                        select {
+                            width: 50px;
+                            margin-right: 20px;
+                            color: #000;
+                        }
+
+                        button {
+                            min-width: 70px;
+                            width: 70px;
+                            font-size: 20px;
+                        }
+                    }
+
+                    button {
+                        height: 70px;
+                        width: 80%;
+                        min-width: 200px;
+                        font-size: xx-large;
+                        font-family: 'HelveticaNeueLT';
+                        border: 0;
+                        background: #b01e23;
+                        color: #ffd401;
+                        
+                        @include respond-to(sm) {
+                            height: 55px;
+                            font-size: 25px;
+                            min-width: 100px;
+                        }
+
+                        @include respond-to(md) {
+                            height: 55px;
+                            font-size: 25px;
+                            min-width: 100px;
+                        }
+
+                        @include respond-to(lg) {
+                            height: 60px;
+                            font-size: 30px;
+                            min-width: 150px;
+                        }
+
+                        @include respond-to(xlg) {
+                            height: 60px;
+                            font-size: 30px;
+                            min-width: 150px;
+                        }
+
+                        &:not(:last-child){
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        position: fixed;
+        bottom: 10%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        button {
+            height: 70px;
+            width: 20%;
+            min-width: 100px;
+            font-size: xx-large;
+            font-family: 'HelveticaNeueLT';
+            border: 0;
+            background: #b01e23;
+            color: #ffd401;
+
+            @include respond-to(sm) {
+                height: 55px;
+                font-size: 25px;
+                min-width: 100px;
+            }
+
+            @include respond-to(md) {
+                height: 55px;
+                font-size: 25px;
+                min-width: 100px;
+            }
+        }
+    }
+}
